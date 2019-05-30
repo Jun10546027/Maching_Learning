@@ -21,11 +21,15 @@ df.set_index('datetime',inplace=True)
 # print(df)
 
 #繪製移動平均線
-df['mvg30'] = df['value'].rolling(window=30).mean()
+mvg30 = df['value'].rolling(window=30).mean()
 
 #設定位置
 plt.subplot(2,1,1)
-plt.plot(df)
+
+#seting label
+plt.plot(df,label = 'Bitcoin tendency')
+plt.plot(mvg30,label = 'Bitcoin mvg')
+plt.legend() #show labels
 
 #設定title，y軸，X軸
 plt.title("All of Bitcoin tendency / month",loc="right")
@@ -40,11 +44,16 @@ df1.columns = ['datetime','value']
 df1.set_index('datetime',inplace=True)
 
 #設定移動平均線
-df1['mvg7'] = df1['value'].rolling(window=7).mean()
+mvg7 = df1['value'].rolling(window=7).mean()
+
 
 #定位，畫出來
 plt.subplot(3,1,3)
-plt.plot(df1)
+
+#setting label
+plt.plot(df1,label = 'Bitcoin tendency of year')
+plt.plot(mvg7,label = 'Bitcoin mvg')
+plt.legend() #show labels
 
 #設定 title , 設定x軸，Y軸
 plt.title("Bitcoin tendency of year / week",loc="right")
